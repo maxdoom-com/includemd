@@ -26,4 +26,4 @@ usage in python:
 ## Installation
 
     :::bash
-    pip install git+https://github.com/maxdoom-com/installmd
+    pip install git+https://github.com/maxdoom-com/includemd.git
