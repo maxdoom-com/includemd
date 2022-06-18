@@ -71,9 +71,11 @@ class IncludeMDPreprocessor(Preprocessor):
 class IncludeMD(Extension):
 
     def __init__(self, **kwargs):
-        self._path = kwargs['path']
+        self.config = {
+            'path': [kwargs['path'], ],
+        }
         super(self.__class__, self).__init__(**kwargs)
 
 
     def extendMarkdown(self, md):
-        md.preprocessors.register(IncludeMDPreprocessor(md, self._path), 'include.md', 1)
+        md.preprocessors.register(IncludeMDPreprocessor(md, self.config['path'][0]), 'include.md', 1)
