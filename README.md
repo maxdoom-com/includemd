@@ -6,7 +6,7 @@ usage in markdown:
 
     :::markdown
     ...
-    #include filename
+    #md filename
     ...
 
 

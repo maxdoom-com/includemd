@@ -8,7 +8,7 @@ a preprocessor that simply includes other files, even recursively!
 usage in markdown:
 
     ...
-    #include filename
+    #md filename
     ...
 
 
@@ -36,8 +36,10 @@ class IncludeMDPreprocessor(Preprocessor):
 
         with open(os.path.join( self.path, filename)) as file:
             for line in file.readlines():
-                if line.startswith('#include'):
-                    filename = line.split()[1]
+                
+                splitted = line.split()
+                if len(splitted) > 0 and splitted[0] == '#md':
+                    filename = splitted[1]
                     for line in self._incl(filename):
                         new_lines.append(line)
                 else:
@@ -51,8 +53,9 @@ class IncludeMDPreprocessor(Preprocessor):
 
         for line in lines:
             
-            if line.startswith('#include'):
-                filename = line.split()[1]
+            splitted = line.split()
+            if len(splitted) > 0 and splitted[0] == '#md':
+                filename = splitted[1]
                 for line in self._incl(filename):
                     new_lines.append(line)
 
